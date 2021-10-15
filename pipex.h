@@ -1,0 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/13 20:56:38 by gsilva-v          #+#    #+#             */
+/*   Updated: 2021/10/15 16:45:10 by gsilva-v         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PIPEX_H
+# define PIPEX_H
+
+# include <fcntl.h>//open
+# include <sys/types.h>//wait
+# include <sys/wait.h>//wait
+# include <unistd.h>// execve e outros
+# include <stdlib.h>//malloc
+# include <stdio.h>//perror
+# include <string.h>//strerror
+
+# define INV_ARG "Invalid args!\n"
+# define HOW_USE "Try: './pipex infile <\"cmd1\"> <\"cmd2\"> outfile\n"
+# define INV_COM "Invalid command! Try another!"
+
+typedef struct s_pipe
+{
+	char	*input;
+	char	*output;
+	char	*firstcommand;
+	char	*lastcommand;
+
+}	t_pipe;
+
+/*Utils*/
+int		ft_strlen(const char *str);
+char	*ft_strdup(const char *s);
+char	**ft_split(const char *s, char c);
+int		ft_strlen(const char *str);
+void	*ft_calloc(size_t nbytes, size_t sizemem);
+
+/*funções de erro*/
+int		arg_error(char *s1, char *s2);
+void	command_error(char *s);
+
+/*inicialização*/
+void	init_struct(char **argv, t_pipe *pipet);
+void	pipex(t_pipe *pipet, char **path_command);
+void	first_command(t_pipe *pipet, int fd[], char **path_command);
+void	second_command(t_pipe *pipet, int fd[], char **path_command);
+void	exec_command(char *what_comand, char **path_command, char *my_program);
+void	exec_command_another(char *what_comand, char **path_command);
+char	*what_path(char *what_comand, char **path_comand);
+char	*set_path(void);
+void	format_buffer(char *buffer);
+
+#endif
