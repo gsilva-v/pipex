@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:45:53 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/15 16:39:04 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/20 16:54:45 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,21 @@ int	arg_error(char *s1, char *s2)
 
 void	command_error(char *s)
 {
-	char *error;
-	
-	error = malloc(sizeof(char *) * ft_strlen(s));
-	error = ft_strdup(s);
 	write (2, "bash: ", 6);
-	write (2, error, ft_strlen(error));
+	write (2, s, ft_strlen(s));
 	write (2, ": command not found\n", 20);
+}
+
+char	*inv_fd(char *s)
+{
+	write(2, s, ft_strlen(s));
+	write(2, "\n", 1);
+	return (0);
+}
+
+void	inv_arc(t_pipe *pipet)
+{
+	write(2, pipet->firstcommand, ft_strlen(pipet->firstcommand));
+	write(2, ": ", 2);
+	perror(pipet->input);
 }

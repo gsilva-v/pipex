@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:50:12 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/15 17:55:21 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/20 16:33:19 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	first_command(t_pipe *pipet, int fd[], char **path_command)
 
 	input_file = open(pipet->input, O_RDONLY);
 	if (input_file == -1)
-		return (perror("invalid fd"));
+		return (inv_arc(pipet));
 	if (dup2(input_file, STDIN_FILENO) < 0)
 		return (perror("invalid dup!"));
 	if (dup2(fd[1], STDOUT_FILENO) < 0)

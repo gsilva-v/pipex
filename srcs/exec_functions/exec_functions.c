@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:48:54 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/15 18:00:12 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/20 16:45:29 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	exec_command(char *what_comand, char **path_command, char *my_param)
 	argv[i + 1] = NULL;
 	if (execve(command, argv, path_command) == -1)
 		command_error(what_comand);
+	waitpid(command[0], NULL, 0);
 }
 
 void	exec_command_another(char *what_comand, char **path_command)
@@ -62,8 +63,8 @@ void	exec_command_another(char *what_comand, char **path_command)
 	how_many = how_many_flags(flags);
 	argv = (char **)malloc(sizeof(char *) * (how_many + 1));
 	what_comand = flags[0];
-	what_path(what_comand, path_command);
-	command = set_path();
+	what_another_path(what_comand, path_command);
+	command = set_another_path();
 	argv[0] = what_comand;
 	while (flags[i])
 	{	
@@ -73,4 +74,5 @@ void	exec_command_another(char *what_comand, char **path_command)
 	argv[i] = NULL;
 	if (execve(command, argv, path_command) == -1)
 		command_error(what_comand);
+	waitpid(command[0], NULL, 0);
 }
