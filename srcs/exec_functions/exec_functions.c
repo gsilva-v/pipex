@@ -74,5 +74,5 @@ void	exec_command_another(char *what_comand, char **path_command)
 	argv[i] = NULL;
 	if (execve(command, argv, path_command) == -1)
 		command_error(what_comand);
-	waitpid(command[0],NULL, 0);
+	waitpid(command[0], NULL, 0);
 }

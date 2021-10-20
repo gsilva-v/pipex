@@ -14,7 +14,6 @@
 
 int	arg_error(char *s1, char *s2)
 {
-	
 	write(1, s1, ft_strlen(s1));
 	write(1, s2, ft_strlen(s2));
 	return (-1);

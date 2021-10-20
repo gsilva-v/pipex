@@ -16,7 +16,7 @@ char	*what_path(char *what_comand, char **path_comand)
 {
 	int		pid;
 	char	*argv[3];
-	
+
 	pid = fork();
 	if (pid == 0)
 	{
@@ -42,20 +42,20 @@ char	*set_path(void)
 	buffer = ft_calloc(51, sizeof(char));
 	n_bytes = read(fd, buffer, 50);
 	if (buffer[0] == '\0' || n_bytes <= 0)
-		return(inv_fd("invalid comand"));
+		return (inv_fd("invalid comand"));
 	format_buffer(buffer);
 	to_return = malloc(sizeof(char) * n_bytes);
 	to_return = ft_strdup(buffer);
 	free(buffer);
 	unlink("comand_path");
 	return (to_return);
-
 }
+
 char	*what_another_path(char *what_comand, char **path_comand)
 {
 	int		pid;
 	char	*argv[3];
-	
+
 	pid = fork();
 	if (pid == 0)
 	{
@@ -81,14 +81,13 @@ char	*set_another_path(void)
 	buffer = ft_calloc(51, sizeof(char));
 	n_bytes = read(fd, buffer, 50);
 	if (buffer[0] == '\0' || n_bytes <= 0)
-		return(inv_fd("invalid comand"));
+		return (inv_fd("invalid comand"));
 	format_buffer(buffer);
 	to_return = malloc(sizeof(char) * n_bytes);
 	to_return = ft_strdup(buffer);
 	free(buffer);
 	unlink("comand_another_path");
 	return (to_return);
-
 }
 
 void	format_buffer(char *buffer)
