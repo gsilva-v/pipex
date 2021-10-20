@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:47:14 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/20 16:47:19 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/20 16:55:43 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*what_path(char *what_comand, char **path_comand)
 {
 	int		pid;
 	char	*argv[3];
-
+	
 	pid = fork();
 	if (pid == 0)
 	{
@@ -49,8 +49,8 @@ char	*set_path(void)
 	free(buffer);
 	unlink("comand_path");
 	return (to_return);
-}
 
+}
 char	*what_another_path(char *what_comand, char **path_comand)
 {
 	int		pid;
@@ -80,15 +80,9 @@ char	*set_another_path(void)
 	fd = open("comand_another_path", O_RDONLY);
 	buffer = ft_calloc(51, sizeof(char));
 	n_bytes = read(fd, buffer, 50);
-	write(2, "\n", 1);
-	
 	if (buffer[0] == '\0' || n_bytes <= 0)
 		return(inv_fd("invalid comand"));
 	format_buffer(buffer);
-	write(2, "retorno da pasta", 17);
-	write(2, "\n", 1);
-	write(2, buffer, n_bytes);
-	write(2, "\n", 1);
 	to_return = malloc(sizeof(char) * n_bytes);
 	to_return = ft_strdup(buffer);
 	free(buffer);

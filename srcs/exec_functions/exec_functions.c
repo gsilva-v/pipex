@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:48:54 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/20 16:45:29 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/20 16:34:55 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ void	exec_command_another(char *what_comand, char **path_command)
 	argv[i] = NULL;
 	if (execve(command, argv, path_command) == -1)
 		command_error(what_comand);
-	waitpid(command[0], NULL, 0);
+	waitpid(command[0],NULL, 0);
 }

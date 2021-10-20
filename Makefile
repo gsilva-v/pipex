@@ -50,4 +50,4 @@ fclean: clean
 re: fclean all
 
 run: re 
-	./pipex infile "cat " "wc -l" outfile
+	./pipex infile "cat " "grep C" outfile

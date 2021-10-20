@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:56:38 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/20 17:05:30 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/20 17:01:37 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_pipe
 int		ft_strlen(const char *str);
 char	*ft_strdup(const char *s);
 char	**ft_split(const char *s, char c);
-int		ft_strlen(const char *str);
 void	*ft_calloc(size_t nbytes, size_t sizemem);
 
 /*funções de erro*/

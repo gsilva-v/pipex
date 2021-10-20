@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:50:12 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/20 16:33:19 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/20 16:57:23 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	second_command(t_pipe *pipet, int fd[], char **path_command)
 {
 	int	output_file;
 
-	output_file = open(pipet->output, O_WRONLY | O_CREAT , 0666);
+	output_file = open(pipet->output, O_WRONLY | O_CREAT , 0666, "\0");
 	if (output_file == -1)
 		return (perror("wrong file"));
 	if (dup2(output_file, STDOUT_FILENO) < 0)
