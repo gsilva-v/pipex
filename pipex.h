@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:56:38 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/15 16:45:10 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/20 17:05:30 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	*ft_calloc(size_t nbytes, size_t sizemem);
 /*funções de erro*/
 int		arg_error(char *s1, char *s2);
 void	command_error(char *s);
+char	*inv_fd(char *s);
+void	inv_arc(t_pipe *pipet);
 
 /*inicialização*/
 void	init_struct(char **argv, t_pipe *pipet);
@@ -53,7 +55,9 @@ void	second_command(t_pipe *pipet, int fd[], char **path_command);
 void	exec_command(char *what_comand, char **path_command, char *my_program);
 void	exec_command_another(char *what_comand, char **path_command);
 char	*what_path(char *what_comand, char **path_comand);
+char	*what_another_path(char *what_comand, char **path_comand);
 char	*set_path(void);
+char	*set_another_path(void);
 void	format_buffer(char *buffer);
 
 #endif
