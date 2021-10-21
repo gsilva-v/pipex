@@ -41,10 +41,10 @@ void	exec_command(char *what_comand, char **path_command, char *my_param)
 	argv[1] = my_param;
 	while (flags[i])
 	{	
-		argv[i + 1] = flags[i];
+		argv[i] = flags[i];
 		i++;
 	}
-	argv[i + 1] = NULL;
+	argv[i] = NULL;
 	if (execve(command, argv, path_command) == -1)
 		command_error(what_comand);
 	waitpid(command[0], NULL, 0);

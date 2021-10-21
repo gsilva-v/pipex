@@ -50,7 +50,13 @@ fclean: clean
 re: fclean all
 
 run: re 
-	./pipex infile "cat " "wc" outfile
+	./pipex infile "cat " "wc -l" outfile
 
 run2: re
 	 ./pipex infile "catt" "ec -l" outfile
+
+run3: re
+	 ./pipex infile2 "tr a b" "tr b c" outfile
+
+run4: re
+	 ./pipex infile2 "tr a b" "tsr b c" outfile
