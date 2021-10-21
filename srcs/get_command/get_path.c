@@ -42,7 +42,10 @@ char	*set_path(void)
 	buffer = ft_calloc(51, sizeof(char));
 	n_bytes = read(fd, buffer, 50);
 	if (buffer[0] == '\0' || n_bytes <= 0)
-		return (inv_fd("invalid comand"));
+	{
+		free (buffer);
+		exit (127);
+	}
 	format_buffer(buffer);
 	to_return = malloc(sizeof(char) * n_bytes);
 	to_return = ft_strdup(buffer);
@@ -81,7 +84,10 @@ char	*set_another_path(void)
 	buffer = ft_calloc(51, sizeof(char));
 	n_bytes = read(fd, buffer, 50);
 	if (buffer[0] == '\0' || n_bytes <= 0)
-		return (inv_fd("invalid comand"));
+	{
+		free (buffer);
+		exit (127);
+	}
 	format_buffer(buffer);
 	to_return = malloc(sizeof(char) * n_bytes);
 	to_return = ft_strdup(buffer);

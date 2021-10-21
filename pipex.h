@@ -21,6 +21,10 @@
 # include <stdio.h>//perror
 # include <string.h>//strerror
 
+# define INVALID_FD 6666
+# define INVALID_COMAND 127
+# define INVALID_ARGS 130
+# define INVALID_ARC 0
 # define INV_ARG "Invalid args!\n"
 # define HOW_USE "Try: './pipex infile <\"cmd1\"> <\"cmd2\"> outfile\n"
 # define INV_COM "Invalid command! Try another!"

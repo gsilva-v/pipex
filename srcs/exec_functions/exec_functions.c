@@ -35,7 +35,8 @@ void	exec_command(char *what_comand, char **path_command, char *my_param)
 	how_many = how_many_flags(flags);
 	argv = (char **)malloc(sizeof(char *) * (how_many + 1));
 	what_comand = flags[0];
-	what_path(what_comand, path_command);
+	if (what_path(what_comand, path_command) == NULL)
+		command_error(what_comand);
 	command = set_path();
 	argv[0] = what_comand;
 	argv[1] = my_param;
@@ -63,7 +64,8 @@ void	exec_command_another(char *what_comand, char **path_command)
 	how_many = how_many_flags(flags);
 	argv = (char **)malloc(sizeof(char *) * (how_many + 1));
 	what_comand = flags[0];
-	what_another_path(what_comand, path_command);
+	if (what_another_path(what_comand, path_command) == NULL)
+		command_error(what_comand);
 	command = set_another_path();
 	argv[0] = what_comand;
 	while (flags[i])

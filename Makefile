@@ -51,3 +51,6 @@ re: fclean all
 
 run: re 
 	./pipex infile "cat " "wc" outfile
+
+run2: re
+	 ./pipex infile "catt" "ec -l" outfile
