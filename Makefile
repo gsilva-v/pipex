@@ -1,6 +1,7 @@
 NAME = pipex
 
-CC = clang
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
 
 RM = rm -rf
 
@@ -13,8 +14,6 @@ PATH_INPUT = $(PATH_SRC)input_output/
 PATH_GET = $(PATH_SRC)get_command/
 PATH_OBJS= ./objs/
 
-
-
 SRCS = $(PATH_MESSAGE)errors.c $(PATH_INIT)init_struct.c\
 	$(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)ft_strlen.c\
 	$(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_calloc.c\
@@ -24,11 +23,7 @@ SRCS = $(PATH_MESSAGE)errors.c $(PATH_INIT)init_struct.c\
 
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
-
 all: $(NAME)
-
-$(NAME) : $(OBJS)
-	@$(CC) $(PATH_SRC)pipex.c $(OBJS) -o $(NAME)
 
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
@@ -38,8 +33,10 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)message
 	@mkdir -p $(PATH_OBJS)utils
 	@mkdir -p $(PATH_OBJS)init
+	$(CC) $(CFLAGS) -I. -c $< -o $@
 
-	@$(CC) -I. -c $< -o $@
+$(NAME) : $(OBJS)
+	$(CC) $(CFLAGS) $(PATH_SRC)pipex.c $(OBJS) -o $(NAME)
 
 clean:
 	@$(RM) objs
@@ -49,15 +46,5 @@ fclean: clean
 
 re: fclean all
 
-run: re 
-	./pipex infile "cat " "wc -l" outfile
-
-run2: re
-	 ./pipex infile "catt" "ec -l" outfile
-
-run3: re
-	 ./pipex infile2 "tr a b" "tr b c" outfile
-
-run4: re
-	 ./pipex infile2 "tr a b" "tsr b c" outfile
+.PHONY: all $(NAME) $(PATH_OBJS) clean fclean re
 

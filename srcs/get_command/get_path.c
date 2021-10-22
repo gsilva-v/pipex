@@ -16,7 +16,7 @@ char	*what_path(char *what_comand, char **path_comand)
 {
 	int		pid;
 	char	*argv[3];
-
+	unlink("comand_path");
 	pid = fork();
 	if (pid == 0)
 	{
@@ -45,7 +45,7 @@ char	*set_path(void)
 	to_return = malloc(sizeof(char) * n_bytes);
 	to_return = ft_strdup(buffer);
 	free(buffer);
-	unlink("comand_path");
+	// unlink("comand_path");
 	return (to_return);
 }
 
@@ -54,6 +54,7 @@ char	*what_another_path(char *what_comand, char **path_comand)
 	int		pid;
 	char	*argv[3];
 
+	unlink("comand_another_path");
 	pid = fork();
 	if (pid == 0)
 	{
@@ -83,7 +84,7 @@ char	*set_another_path(void)
 	to_return = malloc(sizeof(char) * n_bytes);
 	to_return = ft_strdup(buffer);
 	free(buffer);
-	unlink("comand_another_path");
+	// unlink("comand_another_path");
 	return (to_return);
 }
 

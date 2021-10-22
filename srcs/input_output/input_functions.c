@@ -20,9 +20,9 @@ void	first_command(t_pipe *pipet, int fd[], char **path_command)
 	if (input_file == -1)
 		return (inv_arc(pipet));
 	if (dup2(input_file, STDIN_FILENO) < 0)
-		return (perror("invalid dup!"));
+		return (perror("Invalid dup!"));
 	if (dup2(fd[1], STDOUT_FILENO) < 0)
-		return (perror("invalid dup!"));
+		return (perror("Invalid dup!"));
 	close(fd[1]);
 	exec_command(pipet->firstcommand, path_command, pipet->input);
 }
@@ -32,9 +32,9 @@ void	second_command(t_pipe *pipet, int fd[], char **path_command)
 	int		output_file;
 
 	unlink("outfile");
-	output_file = open(pipet->output, O_WRONLY | O_CREAT, 0666);
+	output_file = open(pipet->output, O_WRONLY | O_CREAT, 0777);
 	if (output_file == -1)
-		return (perror("wrong file"));
+		return (perror("Fail to create outfile"));
 	if (dup2(output_file, STDOUT_FILENO) < 0)
 		return (perror("wrong dup"));
 	if (dup2(fd[0], STDIN_FILENO) < 0)
