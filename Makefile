@@ -60,3 +60,4 @@ run3: re
 
 run4: re
 	 ./pipex infile2 "tr a b" "tsr b c" outfile
+
