@@ -6,11 +6,11 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:45:53 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/18 22:23:04 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/23 09:52:26 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../pipex.h"
+#include "pipex.h"
 
 int	arg_error(char *s1, char *s2)
 {

@@ -3,6 +3,8 @@ NAME = pipex
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
+INCLUDE = -I./includes
+
 RM = rm -rf
 
 PATH_SRC = ./srcs/
@@ -25,6 +27,10 @@ OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
 all: $(NAME)
 
+
+$(NAME) : $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDE) $(PATH_SRC)pipex.c $(OBJS) -o $(NAME)
+
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)get_command
@@ -33,10 +39,7 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)message
 	@mkdir -p $(PATH_OBJS)utils
 	@mkdir -p $(PATH_OBJS)init
-	$(CC) $(CFLAGS) -I. -c $< -o $@
-
-$(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(PATH_SRC)pipex.c $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
 	@$(RM) objs

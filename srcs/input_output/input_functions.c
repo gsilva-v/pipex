@@ -6,11 +6,11 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:50:12 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/20 16:57:23 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/23 09:51:06 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../pipex.h"
+#include "pipex.h"
 
 void	first_command(t_pipe *pipet, int fd[], char **path_command)
 {

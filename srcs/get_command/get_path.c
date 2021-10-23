@@ -6,11 +6,11 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:47:14 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/20 16:55:43 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/23 09:51:16 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../pipex.h"
+#include "pipex.h"
 
 char	*what_path(char *what_comand, char **path_comand)
 {

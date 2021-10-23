@@ -6,11 +6,11 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:48:54 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/20 16:34:55 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/23 09:50:52 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../pipex.h"
+#include "pipex.h"
 
 int	how_many_flags(char **flags)
 {
