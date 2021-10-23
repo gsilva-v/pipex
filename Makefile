@@ -27,18 +27,18 @@ OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
 all: $(NAME)
 
-
 $(NAME) : $(OBJS)
+	@echo "compilando"
 	$(CC) $(CFLAGS) $(INCLUDE) $(PATH_SRC)pipex.c $(OBJS) -o $(NAME)
 
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
-	@mkdir -p $(PATH_OBJS)get_command
-	@mkdir -p $(PATH_OBJS)exec_functions
-	@mkdir -p $(PATH_OBJS)input_output
-	@mkdir -p $(PATH_OBJS)message
-	@mkdir -p $(PATH_OBJS)utils
 	@mkdir -p $(PATH_OBJS)init
+	@mkdir -p $(PATH_OBJS)utils
+	@mkdir -p $(PATH_OBJS)message
+	@mkdir -p $(PATH_OBJS)get_command
+	@mkdir -p $(PATH_OBJS)input_output
+	@mkdir -p $(PATH_OBJS)exec_functions
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
