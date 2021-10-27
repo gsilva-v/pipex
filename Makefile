@@ -18,8 +18,9 @@ PATH_OBJS= ./objs/
 
 SRCS = $(PATH_MESSAGE)errors.c $(PATH_INIT)init_struct.c\
 	$(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)ft_strlen.c\
-	$(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_calloc.c\
-	$(PATH_EXEC)exec_functions.c\
+	$(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_strnstr.c\
+	$(PATH_UTILS)ft_itoa.c $(PATH_UTILS)ft_strlcpy.c\
+	$(PATH_EXEC)exec_functions.c $(PATH_EXEC)swap_arg.c\
 	$(PATH_INPUT)input_functions.c\
 	$(PATH_GET)get_path.c
 
@@ -28,8 +29,7 @@ OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	@echo "compilando"
-	$(CC) $(CFLAGS) $(INCLUDE) $(PATH_SRC)pipex.c $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDE) $(PATH_SRC)pipex.c $(OBJS) -o $(NAME)
 
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
@@ -39,7 +39,7 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)get_command
 	@mkdir -p $(PATH_OBJS)input_output
 	@mkdir -p $(PATH_OBJS)exec_functions
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
 	@$(RM) objs
@@ -48,6 +48,10 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
+
+
+run: all
+	./pipex infile "tr a ' '" "grep J" outfile
 
 .PHONY: all clean fclean re
 

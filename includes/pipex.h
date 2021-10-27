@@ -28,6 +28,7 @@
 # define INV_ARG "Invalid args!\n"
 # define HOW_USE "Try: './pipex infile <\"cmd1\"> <\"cmd2\"> outfile\n"
 # define INV_COM "Invalid command! Try another!"
+# define SPACE "0x0"
 
 typedef struct s_pipe
 {
@@ -43,6 +44,9 @@ int		ft_strlen(const char *str);
 char	*ft_strdup(const char *s);
 char	**ft_split(const char *s, char c);
 void	*ft_calloc(size_t nbytes, size_t sizemem);
+char	*ft_strnstr(const char *str, char *tofind);
+char	*ft_itoa(int n);
+size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);
 
 /*funções de erro*/
 int		arg_error(char *s1, char *s2);
@@ -57,6 +61,8 @@ void	first_command(t_pipe *pipet, int fd[], char **path_command);
 void	second_command(t_pipe *pipet, int fd[], char **path_command);
 void	exec_command(char *what_comand, char **path_command, char *my_program);
 void	exec_command_another(char *what_comand, char **path_command);
+char	*swap_space_arg(char *command,char *what_change, char *to_swap);
+char **replace_in_matriz(char **matriz, char *what_chance, char *to_swap);
 char	*what_path(char *what_comand, char **path_comand);
 char	*what_another_path(char *what_comand, char **path_comand);
 char	*set_path(void);
