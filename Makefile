@@ -1,6 +1,6 @@
 NAME = pipex
 
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Werror -Wextra
 
 INCLUDE = -I./includes
@@ -49,5 +49,5 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all $(NAME) $(PATH_OBJS) clean fclean re
+.PHONY: all clean fclean re
 

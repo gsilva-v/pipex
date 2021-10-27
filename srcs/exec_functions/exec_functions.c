@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:48:54 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/23 09:50:52 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/27 09:41:12 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	exec_command(char *what_comand, char **path_command, char *my_param)
 	char	*command;
 
 	i = 1;
+	
+	write(2, what_comand, ft_strlen(what_comand));
 	flags = ft_split(what_comand, ' ');
 	how_many = how_many_flags(flags);
 	argv = (char **)malloc(sizeof(char *) * (how_many + 1));
