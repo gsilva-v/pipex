@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:47:14 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/23 09:51:16 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/27 23:42:29 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*what_path(char *what_comand, char **path_comand)
 {
 	int		pid;
 	char	*argv[3];
+
 	unlink("comand_path");
 	pid = fork();
 	if (pid == 0)
@@ -45,7 +46,7 @@ char	*set_path(void)
 	to_return = malloc(sizeof(char) * n_bytes);
 	to_return = ft_strdup(buffer);
 	free(buffer);
-	// unlink("comand_path");
+	unlink("comand_path");
 	return (to_return);
 }
 
@@ -84,7 +85,7 @@ char	*set_another_path(void)
 	to_return = malloc(sizeof(char) * n_bytes);
 	to_return = ft_strdup(buffer);
 	free(buffer);
-	// unlink("comand_another_path");
+	unlink("comand_another_path");
 	return (to_return);
 }
 

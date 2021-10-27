@@ -55,14 +55,14 @@ char	*inv_fd(char *s);
 void	inv_arc(t_pipe *pipet);
 
 /*inicialização*/
-void	init_struct(char **argv, t_pipe *pipet);
+void	init_struct(char **argv, t_pipe *pipet, int argc);
 void	pipex(t_pipe *pipet, char **path_command);
 void	first_command(t_pipe *pipet, int fd[], char **path_command);
 void	second_command(t_pipe *pipet, int fd[], char **path_command);
 void	exec_command(char *what_comand, char **path_command, char *my_program);
 void	exec_command_another(char *what_comand, char **path_command);
-char	*swap_space_arg(char *command,char *what_change, char *to_swap);
-char **replace_in_matriz(char **matriz, char *what_chance, char *to_swap);
+char	*swap_space_arg(char *command, char *what_change, char *to_swap);
+char	**replace_in_matriz(char **matriz, char *what_chance, char *to_swap);
 char	*what_path(char *what_comand, char **path_comand);
 char	*what_another_path(char *what_comand, char **path_comand);
 char	*set_path(void);

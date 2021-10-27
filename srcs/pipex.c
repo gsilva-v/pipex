@@ -30,10 +30,15 @@ void	pipex(t_pipe *pipet, char **path_command)
 int	main(int argc, char **argv, char **path_command)
 {
 	t_pipe	pipet;
+	int		outfile;
 
-	init_struct(argv, &pipet);
+	outfile = 0;
+	init_struct(argv, &pipet, argc);
 	if (argc != 5)
+	{
+		outfile = open(argv[argc - 1], O_CREAT | O_TRUNC, 0666);
 		return (arg_error(INV_ARG, HOW_USE));
+	}
 	pipex(&pipet, path_command);
 	return (0);
 }

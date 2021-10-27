@@ -31,7 +31,7 @@ void	second_command(t_pipe *pipet, int fd[], char **path_command)
 {
 	int		output_file;
 
-	output_file = open(pipet->output, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	output_file = open(pipet->output, O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	if (output_file == -1)
 		return (perror("Fail to create outfile"));
 	if (dup2(output_file, STDOUT_FILENO) < 0)

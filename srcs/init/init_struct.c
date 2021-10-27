@@ -12,10 +12,10 @@
 
 #include "pipex.h"
 
-void	init_struct(char **argv, t_pipe *pipet)
+void	init_struct(char **argv, t_pipe *pipet, int argc)
 {
-	pipet->input = argv[1];
-	pipet->firstcommand = argv[2];
-	pipet->lastcommand = argv[3];
-	pipet->output = argv[4];
+	pipet->input = argv[argc - 4];
+	pipet->firstcommand = argv[argc - 3];
+	pipet->lastcommand = argv[argc - 2];
+	pipet->output = argv[argc - 1];
 }

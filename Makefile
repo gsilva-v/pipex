@@ -19,7 +19,7 @@ PATH_OBJS= ./objs/
 SRCS = $(PATH_MESSAGE)errors.c $(PATH_INIT)init_struct.c\
 	$(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)ft_strlen.c\
 	$(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_strnstr.c\
-	$(PATH_UTILS)ft_itoa.c $(PATH_UTILS)ft_strlcpy.c\
+	$(PATH_UTILS)ft_itoa.c \
 	$(PATH_EXEC)exec_functions.c $(PATH_EXEC)swap_arg.c\
 	$(PATH_INPUT)input_functions.c\
 	$(PATH_GET)get_path.c
@@ -51,7 +51,10 @@ re: fclean all
 
 
 run: all
-	./pipex infile "tr a ' '" "grep J" outfile
+	./pipex infile2 "tr a ' '" "tr b ' '" outfile
+
+run2: fclean all
+	./pipex infile2 outfile
 
 .PHONY: all clean fclean re
 
