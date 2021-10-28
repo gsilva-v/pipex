@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:47:14 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/27 23:42:29 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/28 14:10:47 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*what_path(char *what_comand, char **path_comand)
 		argv[1] = what_comand;
 		argv[2] = NULL;
 		close (STDOUT_FILENO);
-		open ("comand_path", O_CREAT | O_WRONLY, 0666, "\0");
+		open ("comand_path", O_CREAT | O_WRONLY | O_TRUNC, 0666);
 		execve("/usr/bin/which", argv, path_comand);
 	}
 	waitpid(pid, NULL, 0);
@@ -46,7 +46,6 @@ char	*set_path(void)
 	to_return = malloc(sizeof(char) * n_bytes);
 	to_return = ft_strdup(buffer);
 	free(buffer);
-	unlink("comand_path");
 	return (to_return);
 }
 
@@ -63,7 +62,7 @@ char	*what_another_path(char *what_comand, char **path_comand)
 		argv[1] = what_comand;
 		argv[2] = NULL;
 		close (STDOUT_FILENO);
-		open ("comand_another_path", O_CREAT | O_WRONLY, 0666, "\0");
+		open ("comand_another_path", O_CREAT | O_WRONLY | O_TRUNC, 0666);
 		if (execve("/usr/bin/which", argv, path_comand) == -1)
 			command_error(what_comand);
 	}
@@ -85,7 +84,6 @@ char	*set_another_path(void)
 	to_return = malloc(sizeof(char) * n_bytes);
 	to_return = ft_strdup(buffer);
 	free(buffer);
-	unlink("comand_another_path");
 	return (to_return);
 }
 
