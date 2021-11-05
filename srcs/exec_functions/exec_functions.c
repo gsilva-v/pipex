@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:48:54 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/27 09:41:12 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/05 17:25:19 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	exec_command(char *what_comand, char **path_command, char *my_param)
 	char	**flags;
 	char	**argv;
 	int		how_many;
-	int		i;
 	char	*command;
 
 	if (ft_strnstr(what_comand, " ' '"))
@@ -41,12 +40,12 @@ void	exec_command(char *what_comand, char **path_command, char *my_param)
 	command = set_path();
 	argv[0] = what_comand;
 	argv[1] = my_param;
-	i = -1;
-	while (flags[++i])
-		argv[i] = flags[i];
-	argv[i] = NULL;
-	if (execve(command, argv, path_command) == -1)
+	argv = atribute_flags(flags, argv);
+	if (access(command, F_OK) == 0)
+		execve(command, argv, path_command);
+	else
 		command_error(what_comand);
+	free_argv(argv);
 	waitpid(command[0], NULL, 0);
 }
 
@@ -55,7 +54,6 @@ void	exec_command_another(char *what_comand, char **path_command)
 	char	**flags;
 	char	**argv;
 	int		how_many;
-	int		i;
 	char	*command;
 
 	if (ft_strnstr(what_comand, " ' '"))
@@ -68,11 +66,11 @@ void	exec_command_another(char *what_comand, char **path_command)
 	what_another_path(what_comand, path_command);
 	command = set_another_path();
 	argv[0] = what_comand;
-	i = -1;
-	while (flags[++i])
-		argv[i] = flags[i];
-	argv[i] = NULL;
-	if (execve(command, argv, path_command) == -1)
+	argv = atribute_flags(flags, argv);
+	if (access(command, F_OK) == 0)
+		execve(command, argv, path_command);
+	else
 		command_error(what_comand);
+	free_argv(argv);
 	waitpid(command[0], NULL, 0);
 }

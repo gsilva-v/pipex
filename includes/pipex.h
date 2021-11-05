@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:56:38 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/20 17:01:37 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/05 13:40:07 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_pipe
 	char	*output;
 	char	*firstcommand;
 	char	*lastcommand;
+	int		fd_input;
+	int		fd_output;
 
 }	t_pipe;
 
@@ -47,6 +49,7 @@ void	*ft_calloc(size_t nbytes, size_t sizemem);
 char	*ft_strnstr(const char *str, char *tofind);
 char	*ft_itoa(int n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);
+void	free_argv(char **argv);
 
 /*funções de erro*/
 int		arg_error(char *s1, char *s2);
@@ -61,6 +64,7 @@ void	first_command(t_pipe *pipet, int fd[], char **path_command);
 void	second_command(t_pipe *pipet, int fd[], char **path_command);
 void	exec_command(char *what_comand, char **path_command, char *my_program);
 void	exec_command_another(char *what_comand, char **path_command);
+char	**atribute_flags(char **flags, char **argv);
 char	*swap_space_arg(char *command, char *what_change, char *to_swap);
 char	**replace_in_matriz(char **matriz, char *what_chance, char *to_swap);
 char	*what_path(char *what_comand, char **path_comand);

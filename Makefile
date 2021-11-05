@@ -19,8 +19,8 @@ PATH_OBJS= ./objs/
 SRCS = $(PATH_MESSAGE)errors.c $(PATH_INIT)init_struct.c\
 	$(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)ft_strlen.c\
 	$(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_strnstr.c\
-	$(PATH_UTILS)ft_itoa.c \
-	$(PATH_EXEC)exec_functions.c $(PATH_EXEC)swap_arg.c\
+	$(PATH_UTILS)ft_itoa.c $(PATH_UTILS)free_argv.c\
+	$(PATH_EXEC)exec_functions.c $(PATH_EXEC)swap_arg.c $(PATH_EXEC)atribute_argv.c\
 	$(PATH_INPUT)input_functions.c\
 	$(PATH_GET)get_path.c
 
