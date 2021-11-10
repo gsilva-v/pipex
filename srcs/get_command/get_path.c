@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:47:14 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/11/10 18:09:48 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/10 19:02:33 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*what_path(char *what_comand)
 {
 	int		pos;
-	char **path_comand;
-	char *command_which;
+	char	**path_comand;
+	char	*command_which;
 
 	path_comand = ft_split(PATH, ':');
 	pos = 0;
@@ -39,8 +39,8 @@ char	*what_path(char *what_comand)
 char	*check_access(char *what_comand)
 {
 	int		pos;
-	char **path_comand;
-	char *command_which;
+	char	**path_comand;
+	char	*command_which;
 
 	path_comand = ft_split(PATH, ':');
 	pos = 0;

@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 23:43:02 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/27 23:43:11 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/10 19:03:13 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	lenint(int n)
 		len = 0;
 	else
 		len = 1;
-	while (n != 0 )
+	while (n != 0)
 	{
 		len++;
 		n = n / 10;

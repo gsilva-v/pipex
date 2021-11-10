@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 14:24:48 by gabriel           #+#    #+#             */
-/*   Updated: 2021/11/10 15:35:22 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/10 19:02:55 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ char	**ft_split(char *s, char c)
 	st = 0;
 	posc = 0;
 	n = 0;
-
 	new_str = (char **) malloc(sizeof (char *) * ((counterwords(s, c) + 1)));
 	if (!new_str)
 		return (NULL);

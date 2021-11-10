@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:56:38 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/11/10 17:53:14 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/10 19:10:13 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define INVALID_FD 5
 # define INVALID_COMAND 127
 # define INVALID_ARGS 0
-# define INVALID_ARC 10
+# define INVALID_ARC 1
 # define INV_ARG "Invalid args!\n"
 # define HOW_USE "Try: './pipex infile <\"cmd1\"> <\"cmd2\"> outfile\n"
 # define INV_COM "Invalid command! Try another!"
@@ -71,6 +71,7 @@ char	**atribute_flags(char **flags, char **argv);
 char	*swap_space_arg(char *command, char *what_change, char *to_swap);
 char	**replace_in_matriz(char **matriz, char *what_chance, char *to_swap);
 char	*what_path(char *what_comand);
+int		check_comands(t_pipe *pipet);
 char	*check_access(char *what_comand);
-void	close_pipe(t_pipe *pipet);
+
 #endif

@@ -8,6 +8,7 @@ INCLUDE = -I./includes
 RM = rm -rf
 
 PATH_SRC = ./srcs/
+PATH_CHECK = $(PATH_SRC)check/
 PATH_MESSAGE = $(PATH_SRC)message/
 PATH_INIT = $(PATH_SRC)init/
 PATH_UTILS = $(PATH_SRC)utils/
@@ -16,7 +17,8 @@ PATH_INPUT = $(PATH_SRC)input_output/
 PATH_GET = $(PATH_SRC)get_command/
 PATH_OBJS= ./objs/
 
-SRCS = $(PATH_MESSAGE)errors.c $(PATH_INIT)init_struct.c\
+SRCS = $(PATH_CHECK)check_comands.c\
+	$(PATH_MESSAGE)errors.c $(PATH_INIT)init_struct.c\
 	$(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)ft_strlen.c\
 	$(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_strnstr.c\
 	$(PATH_UTILS)ft_itoa.c $(PATH_UTILS)free_argv.c\
@@ -35,6 +37,7 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)init
 	@mkdir -p $(PATH_OBJS)utils
+	@mkdir -p $(PATH_OBJS)check
 	@mkdir -p $(PATH_OBJS)message
 	@mkdir -p $(PATH_OBJS)get_command
 	@mkdir -p $(PATH_OBJS)input_output
