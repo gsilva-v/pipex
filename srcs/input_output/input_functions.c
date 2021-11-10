@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:50:12 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/11/05 17:14:43 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/10 15:11:43 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	first_command(t_pipe *pipet, int fd[], char **path_command)
 	if (dup2(fd[1], STDOUT_FILENO) < 0)
 		return (perror("Invalid dup!"));
 	close(fd[1]);
-	exec_command(pipet->firstcommand, path_command, pipet->input);
+	exec_command(pipet->firstcommand, path_command);
 }
 
 void	second_command(t_pipe *pipet, int fd[], char **path_command)
@@ -35,5 +35,5 @@ void	second_command(t_pipe *pipet, int fd[], char **path_command)
 	if (dup2(fd[0], STDIN_FILENO) < 0)
 		return (perror("wrong dup"));
 	close (fd[0]);
-	exec_command_another(pipet->lastcommand, path_command);
+	exec_command(pipet->lastcommand, path_command);
 }

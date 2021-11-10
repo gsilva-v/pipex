@@ -1,7 +1,7 @@
 NAME = pipex
 
 CC = clang
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 INCLUDE = -I./includes
 
@@ -51,7 +51,10 @@ re: fclean all
 
 
 run: all
-	./pipex infile2 "tr a ' '" "tr b ' '" outfile
+	./pipex infile2 "cat" "tr b ' '" outfile
+
+run3: all
+	./pipex infile2 "catt" "grepp a" outfile
 
 run2: fclean all
 	./pipex infile2 outfile

@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:48:54 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/11/05 17:25:19 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/10 16:50:45 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ int	how_many_flags(char **flags)
 	return (i + 1);
 }
 
-void	exec_command(char *what_comand, char **path_command, char *my_param)
+void	exec_command(char *what_comand, char **path_command)
 {
 	char	**flags;
 	char	**argv;
 	int		how_many;
-	char	*command;
 
 	if (ft_strnstr(what_comand, " ' '"))
 		what_comand = swap_space_arg(what_comand, " ' '", " 0x0");
@@ -35,42 +34,14 @@ void	exec_command(char *what_comand, char **path_command, char *my_param)
 	flags = replace_in_matriz(flags, "0x0", "  ");
 	how_many = how_many_flags(flags);
 	argv = (char **)malloc(sizeof(char *) * (how_many + 1));
-	what_comand = flags[0];
-	what_path(what_comand, path_command);
-	command = set_path();
-	argv[0] = what_comand;
-	argv[1] = my_param;
 	argv = atribute_flags(flags, argv);
-	if (access(command, F_OK) == 0)
-		execve(command, argv, path_command);
-	else
+	what_comand = what_path(flags[0]);
+	if (what_comand == NULL)
+	{
+		free_argv(argv);
 		command_error(what_comand);
-	free_argv(argv);
-	waitpid(command[0], NULL, 0);
-}
-
-void	exec_command_another(char *what_comand, char **path_command)
-{
-	char	**flags;
-	char	**argv;
-	int		how_many;
-	char	*command;
-
-	if (ft_strnstr(what_comand, " ' '"))
-		what_comand = swap_space_arg(what_comand, " ' '", " 0x0");
-	flags = ft_split(what_comand, ' ');
-	flags = replace_in_matriz(flags, "0x0", "  ");
-	how_many = how_many_flags(flags);
-	argv = (char **)malloc(sizeof(char *) * (how_many + 1));
-	what_comand = flags[0];
-	what_another_path(what_comand, path_command);
-	command = set_another_path();
-	argv[0] = what_comand;
-	argv = atribute_flags(flags, argv);
-	if (access(command, F_OK) == 0)
-		execve(command, argv, path_command);
+		return ;
+	}
 	else
-		command_error(what_comand);
-	free_argv(argv);
-	waitpid(command[0], NULL, 0);
+		execve(what_comand, argv, path_command);
 }

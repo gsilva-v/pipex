@@ -6,99 +6,55 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:47:14 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/10/28 14:10:47 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/10 18:09:48 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*what_path(char *what_comand, char **path_comand)
+char	*what_path(char *what_comand)
 {
-	int		pid;
-	char	*argv[3];
+	int		pos;
+	char **path_comand;
+	char *command_which;
 
-	unlink("comand_path");
-	pid = fork();
-	if (pid == 0)
+	path_comand = ft_split(PATH, ':');
+	pos = 0;
+	while (path_comand[pos] != NULL)
 	{
-		argv[0] = "which";
-		argv[1] = what_comand;
-		argv[2] = NULL;
-		close (STDOUT_FILENO);
-		open ("comand_path", O_CREAT | O_WRONLY | O_TRUNC, 0666);
-		execve("/usr/bin/which", argv, path_comand);
-	}
-	waitpid(pid, NULL, 0);
-	return (0);
-}
-
-char	*set_path(void)
-{
-	char	*buffer;
-	int		fd;
-	int		n_bytes;
-	char	*to_return;
-
-	fd = open("comand_path", O_RDONLY);
-	buffer = ft_calloc(51, sizeof(char));
-	n_bytes = read(fd, buffer, 50);
-	format_buffer(buffer);
-	to_return = malloc(sizeof(char) * n_bytes);
-	to_return = ft_strdup(buffer);
-	free(buffer);
-	return (to_return);
-}
-
-char	*what_another_path(char *what_comand, char **path_comand)
-{
-	int		pid;
-	char	*argv[3];
-
-	unlink("comand_another_path");
-	pid = fork();
-	if (pid == 0)
-	{
-		argv[0] = "which";
-		argv[1] = what_comand;
-		argv[2] = NULL;
-		close (STDOUT_FILENO);
-		open ("comand_another_path", O_CREAT | O_WRONLY | O_TRUNC, 0666);
-		if (execve("/usr/bin/which", argv, path_comand) == -1)
-			command_error(what_comand);
-	}
-	waitpid(pid, NULL, 0);
-	return (0);
-}
-
-char	*set_another_path(void)
-{
-	char	*buffer;
-	int		fd;
-	int		n_bytes;
-	char	*to_return;
-
-	fd = open("comand_another_path", O_RDONLY);
-	buffer = ft_calloc(51, sizeof(char));
-	n_bytes = read(fd, buffer, 50);
-	format_buffer(buffer);
-	to_return = malloc(sizeof(char) * n_bytes);
-	to_return = ft_strdup(buffer);
-	free(buffer);
-	return (to_return);
-}
-
-void	format_buffer(char *buffer)
-{
-	int	i;
-
-	i = 0;
-	while (buffer[i])
-	{
-		if (buffer[i] == '\n')
+		command_which = ft_strjoin(path_comand[pos], what_comand);
+		if (access(command_which, F_OK) == 0)
 		{
-			buffer[i] = '\0';
-			break ;
+			free_argv(path_comand);
+			return (command_which);
 		}
-		i++;
+		free(command_which);
+		pos++;
 	}
+	free_argv(path_comand);
+	command_error(what_comand);
+	return (NULL);
+}
+
+char	*check_access(char *what_comand)
+{
+	int		pos;
+	char **path_comand;
+	char *command_which;
+
+	path_comand = ft_split(PATH, ':');
+	pos = 0;
+	while (path_comand[pos] != NULL)
+	{
+		command_which = ft_strjoin(path_comand[pos], what_comand);
+		if (access(command_which, F_OK) == 0)
+		{
+			free_argv(path_comand);
+			return (command_which);
+		}
+		free(command_which);
+		pos++;
+	}
+	free_argv(path_comand);
+	return (NULL);
 }
